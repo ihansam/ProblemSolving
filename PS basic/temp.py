@@ -1,23 +1,24 @@
-str1 = "ZYJZXZTIBSDG"      # target
-str2 = "TTXGZYJZXZTIBSDGWQLW"      # total
-found = 0
-i = 0
-n = len(str1)
-while i <= (len(str2)-n):
-    jump = 0
-    for j in range(n-1, -1, -1):    # check
-        if str1[j] != str2[i+j]:
-            miss = str2[i+j]
-            jump = 1
-            jj = j-1
-            while jj>=0:             
-                if str1[jj] == miss:
-                    break
-                jump += 1
-                jj -= 1
-            i += jump
-            break
-    if jump == 0:
-        found = 1
-        break
-print(found)
+def isAvailable(candidate, current_col):
+    current_row = len(candidate)
+    for queen_row in range(current_row):
+        if candidate[queen_row] == current_col or abs(candidate[queen_row]-current_col) == current_row - queen_row:
+            return False
+    return True
+
+def DFS(N, current_row, current_candidate, final_result):
+    if current_row == N:
+        final_result.append(current_candidate[:])
+        return
+    
+    for candidate_col in range(N):
+        if isAvailable(current_candidate, candidate_col):
+            current_candidate.append(candidate_col)
+            DFS(N, current_row+1, current_candidate, final_result)
+            current_candidate.pop()
+        
+def solve_n_queen(N):
+    final_result = []
+    DFS(N, 0, [], final_result)
+    return final_result
+
+print(solve_n_queen(6))
