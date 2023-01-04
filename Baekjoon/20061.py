@@ -1,3 +1,6 @@
+# 22.12.29 python 실행 시간 1위
+# https://www.acmicpc.net/problem/status/20061/1003/1
+
 import sys
 inp = sys.stdin.readline
 
