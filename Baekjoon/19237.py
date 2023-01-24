@@ -2,8 +2,8 @@
 # https://www.acmicpc.net/problem/status/19237/1003/1
 
 import sys
-inp = sys.stdin.readline
 
+inp = sys.stdin.readline
 
 EMPTY = 401
 deltas = [(-1, 0), (1, 0), (0, -1), (0, 1)]
@@ -53,7 +53,7 @@ def _get_next_step(s):
             return nd, nr, nc
         if sea[nr][nc].owner == s:
             _candi.append((nd, nr, nc))
-    
+
     if _candi:
         return _candi[0]
     else:
@@ -97,9 +97,9 @@ if __name__ == '__main__':
         for c, shark in enumerate(map(int, inp().split())):
             if not shark:
                 continue
-            sharks_loc[shark-1] = (r, c)
-    sharks_dir = list(map(lambda x: int(x)-1, inp().split()))
-    ndir_priority = [[list(map(lambda x: int(x)-1, inp().split())) for __ in range(4)] for _ in range(M)]
+            sharks_loc[shark - 1] = (r, c)
+    sharks_dir = list(map(lambda x: int(x) - 1, inp().split()))
+    ndir_priority = [[list(map(lambda x: int(x) - 1, inp().split())) for __ in range(4)] for _ in range(M)]
 
     # solution
     answer = 0
